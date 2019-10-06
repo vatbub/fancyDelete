@@ -12,7 +12,8 @@ Now, I assigned a single keyboard shortcut in my photo management tool which sen
 - Simple to use while giving you enough control over how your files are deleted
 
 ## Download
-TBD
+- [GitHub Releases](https://github.com/vatbub/fancyDelete/releases)
+- or [Bintray](https://bintray.com/vatbub/fokprojectsReleases/fancyDelete#downloads)
 
 ## Prerequisites
 You need Java 8 for this program to work.

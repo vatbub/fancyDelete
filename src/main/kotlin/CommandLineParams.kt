@@ -31,19 +31,19 @@ class CommandLineParams {
     @Parameter(names = ["-e", "--extensions"], variableArity = true, description = "Specifies the extensions of the files to be deleted.If not specified, all files with the same file name with any extension are deleted.")
     var allowedExtensions: List<String>? = null
 
-    @Parameter(names = ["-d", "--dryRun"], arity = 1, description = "If set to true, the program will display what files it would delete but no files are actually deleted. IMPORTANT: This setting is saved. That means that all future executions of the program will be dry runs until --dryRun false is specified.")
+    @Parameter(names = ["-d", "--dryRun"], arity = 1, description = "If set to true, the program will display what files it would delete but no files are actually deleted. IMPORTANT: This setting is saved. That means that all future executions of the program will be dry runs until --dryRun false is specified. Possible values: true or false")
     var dryRun: Boolean? = null
 
     @Parameter(names = ["-y", "--yes"], description = "Suppresses the confirmation before files are deleted for this execution only.")
     var skipConfirmationOnce = false
 
-    @Parameter(names = ["-c", "--confirmation"], arity = 1, description = "Enables or disables the confirmation before deleting any file permanently.")
+    @Parameter(names = ["-c", "--confirmation"], arity = 1, description = "Enables or disables the confirmation before deleting any file permanently.: Possible values: true or false")
     var confirmation: Boolean? = null
 
     @Parameter(names = ["-h", "--help", "help", "/?"], help = true, description = "Shows this help.")
     var help = false
 
-    @Parameter(names = ["--logLevel"], arity = 1, converter = LevelConverter::class, description = "Specifies the application log level for this execution")
+    @Parameter(names = ["--logLevel"], arity = 1, converter = LevelConverter::class, description = "Specifies the application log level for this execution. Possible values: OFF, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST, ALL")
     var logLevel: Level = Level.INFO
 
     override fun toString(): String =

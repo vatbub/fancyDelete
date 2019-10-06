@@ -40,10 +40,13 @@ object ConfirmationKey : Key<Boolean>("confirmBeforeDelete", true, { it.toBoolea
 
 fun main(args: Array<String>) {
     Common.getInstance().appName = "fancyDelete"
+    val jarFileName = Common.getInstance().pathAndNameOfCurrentJar
 
     logger.trace("Parsing command line arguments...")
     val commandLineParams = CommandLineParams()
     val jCommander = JCommander(commandLineParams)
+    jCommander.programName = jarFileName
+    jCommander.mainParameterDescription
 
     try {
         jCommander.parse(*args)
@@ -80,7 +83,7 @@ fun main(args: Array<String>) {
     val fileToDeleteCopy = commandLineParams.fileToDelete
 
     if (fileToDeleteCopy == null) {
-        logger.warn("No file to delete was specified, hence, no file is deleted. If you only wanted to update the configuration, that's great but if you need help to use this program, type fancyDelete.exe -h")
+        logger.warn("No file to delete was specified, hence, no file is deleted. If you only wanted to update the configuration, that's great but if you need help to use this program, type $jarFileName -h")
         exitProcess(0)
     }
     val inputFile = File(fileToDeleteCopy)

@@ -24,11 +24,6 @@ import com.beust.jcommander.Parameter
 import java.util.logging.Level
 
 class CommandLineParams {
-    companion object {
-        internal var dryRunSpecified = false
-        internal var confirmationSpecified = false
-    }
-
     // The file to be deleted. All files with the same name but other extensions are deleted too. If you want to specify a filter for extensions, see --extensions
     @Parameter(required = false, description = "<fileToDelete>")
     var fileToDelete: String? = null
@@ -72,16 +67,3 @@ private class LevelConverter : IStringConverter<Level> {
     override fun convert(value: String?): Level = Level.parse(value)
 }
 
-private class CustomDryRunBooleanConverter : IStringConverter<Boolean> {
-    override fun convert(value: String?): Boolean {
-        CommandLineParams.dryRunSpecified = true
-        return value?.toBoolean() ?: false
-    }
-}
-
-private class CustomConfirmationBooleanConverter : IStringConverter<Boolean> {
-    override fun convert(value: String?): Boolean {
-        CommandLineParams.confirmationSpecified = true
-        return value?.toBoolean() ?: false
-    }
-}

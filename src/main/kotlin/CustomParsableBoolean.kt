@@ -23,7 +23,7 @@ import com.github.vatbub.commandlineUserPromptProcessor.parsables.Parsable
 import com.github.vatbub.commandlineUserPromptProcessor.parsables.ParseException
 
 
-class CustomParsableBoolean(var optionsStringKt: String = "Y/N", var defaultValueKt: Boolean? = null) : Parsable<Boolean> {
+class CustomParsableBoolean(private var optionsStringKt: String = "Y/N", private var defaultValueKt: Boolean? = null) : Parsable<Boolean> {
     private var value: Boolean? = null
     override fun getOptionsString() = optionsStringKt
     override fun getDefaultValue() = defaultValueKt

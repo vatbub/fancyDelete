@@ -29,7 +29,8 @@ class CommandLineParams {
         internal var confirmationSpecified = false
     }
 
-    @Parameter(required = true, description = "The file to be deleted. All files with the same name but other extensions are deleted too. If you want to specify a filter for extensions, see --extensions")
+    // The file to be deleted. All files with the same name but other extensions are deleted too. If you want to specify a filter for extensions, see --extensions
+    @Parameter(required = false, description = "<fileToDelete>")
     var fileToDelete: String? = null
 
     @Parameter(names = ["-e", "--extensions"], variableArity = true, description = "Specifies the extensions of the files to be deleted.If not specified, all files with the same file name with any extension are deleted.")

@@ -58,15 +58,6 @@ fun main(args: Array<String>) {
     logger.debug("The supplied command line parameters are:\n$commandLineParams")
 
     if (commandLineParams.help) {
-        /*
-        println("Deletes all files with the specified file name but different extensions.")
-        println("Usage:")
-        println("java -jar fancyDelete.jar <fileNameWithOrWithoutExtension> <fileExtensionsToDelete>")
-        println("Example:")
-        println("java -jar fancyDelete.jar myPicture.png")
-        println("The above will delete \"myPicture.png\" but also all files called \"myPicture\" with any file extension")
-        println("java -jar fancyDelete.jar myPicture.png png dng")
-        println("The above will delete \"myPicture.png\" and \"myPicture.dng\"")*/
         jCommander.usage()
         exitProcess(0)
     }
@@ -78,7 +69,7 @@ fun main(args: Array<String>) {
     }
 
     val confirmationSpecifiedCopy = commandLineParams.confirmation
-    if (confirmationSpecifiedCopy!=null ) {
+    if (confirmationSpecifiedCopy != null) {
         logger.info("Setting confirmBeforeDelete to ${confirmationSpecifiedCopy}...")
         preferences[ConfirmationKey] = confirmationSpecifiedCopy
     }
@@ -87,8 +78,9 @@ fun main(args: Array<String>) {
     val confirmBeforeDeletion = !commandLineParams.skipConfirmationOnce && preferences[ConfirmationKey]
 
     val fileToDeleteCopy = commandLineParams.fileToDelete
+
     if (fileToDeleteCopy == null) {
-        jCommander.usage()
+        logger.warn("No file to delete was specified, hence, no file is deleted. If you only wanted to update the configuration, that's great but if you need help to use this program, type fancyDelete.exe -h")
         exitProcess(0)
     }
     val inputFile = File(fileToDeleteCopy)
